@@ -1,0 +1,42 @@
+@import './sassConfig.scss';
+@import './normalize.scss';
+
+
+
+body{
+    background-color:rgb(207, 222, 235);
+}
+
+i[class^=icon]{
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: $color_main;
+    background-repeat: no-repeat;
+
+}
+
+.icon-help{
+    background-image: url($icon_help);
+}
+
+.icon-search{
+    background-image: url($icon_search);
+}
+
+.icon-location{
+    background-image: url($icon_location);
+}
+
+.icon-user{
+    background-image: url($icon_user);
+}
+
+@mixin webkit($attr, $value) {
+    -webkit-#{$attr}: $value;
+    -moz-#{$attr}: $value;
+    -ms-#{$attr}: $value;
+    -o-#{$attr}: $value;
+    #{$attr}: $value;
+}
