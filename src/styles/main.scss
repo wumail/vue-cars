@@ -40,3 +40,11 @@ i[class^=icon]{
     -o-#{$attr}: $value;
     #{$attr}: $value;
 }
+
+@mixin webkit_a($name,$value){
+    #{$name}: -webkit-#{$value};
+    #{$name}: -moz-#{$value};
+    #{$name}: -ms-#{$value};
+    #{$name}: -o-#{$value};
+    #{$name}: #{$value};
+}
