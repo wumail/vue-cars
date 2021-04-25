@@ -1,0 +1,332 @@
+
+.cars-item{
+    display: flex;
+    flex-direction: column;
+    width: 440px;
+    margin: auto;
+    padding: 10px 30px 10px;
+    background-color: #fff;
+    border-radius: 24px;
+    @include webkit(box-shadow,0 0 18px 0 rgba(0,0,0,.2));
+    @include webkit(box-sizing,border-box);
+    header{
+        display: flex;
+        justify-content: space-between;
+        .cars-logo{
+          img{
+              display: inline-block;
+              height: 34px;
+              margin-right: 10px;
+              vertical-align: middle;
+          }
+          .cars-name{
+              font-size: 16px;
+          }
+        };
+        .cars-attr{
+            line-height: 34px;
+            opacity: .5;
+        }
+    }
+    .cars-content{
+            display: flex;
+            align-items: center;
+            margin-top: 11px 0 7px;
+            img{
+                justify-self: flex-end;
+            height: 120px;
+            }
+            .cars-text{
+                display: none;
+            }
+        .cars-info{
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            width: 120px;
+            height: 120px;
+        }
+        .cars-license{
+            font-size: 18px;
+        }
+        .cars-energy{
+            margin-top: 10px;
+            li{
+                display: inline-block;
+                width: 7px;
+                height: 24px;
+                border-radius: 100px;
+                background-color: #e1e1e1;
+                ~li{
+                    margin-left: 3px;
+                };
+            }
+            @for $i from 1 through 10 {
+                &.active-li-#{$i}{
+                    li:nth-child(-n+#{$i}){
+                        @include webkit_a(background,linear-gradient(to bottom,#17a8fa,#108dd9));
+                    }
+                }
+            }
+        }
+        .cars-energy-box{
+            display: none;
+        }
+        .cars-distance{
+            display: inline;
+            margin-top: 5px;
+            strong{
+                margin:0 5px;
+                font-size: 22px;
+            }
+            sub{
+                position: relative;
+                top: -2px;
+            }
+        }
+    }
+    .park-link{
+        position: relative;
+        display: block;
+        border-top: 1px solid #e1e1e1;
+        color: $color_main;
+        line-height: 53px;
+        opacity: .8;
+        &:after{
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 8px;
+            height: 8px;
+            border-top:1px solid #919294;
+            border-right:1px solid #919294;
+            @include webkit(transform,translate(-50%,-50%) rotate(45deg));
+        }
+    }
+    .cars-rent-type{
+        display: none;
+    }
+    .close{
+        display: none;
+        }
+    .clause{
+        display: none;
+    }
+    .cars-button {
+        display: none;
+    }
+}
+
+.showdetail {
+    position: absolute;
+    height: 600px;
+    bottom: -246px;
+    .cars-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 11px 0 7px;
+        img{
+            order: -1;
+            justify-self: flex-end;
+            height: 150px;
+        }
+        .cars-text{
+            display: block;
+            text-align: center;
+            color: $color_main;
+            opacity: .8;
+        }
+        .cars-info{
+            flex-grow: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            //   justify-content: stretch;
+            height: 120px;
+        }
+        .cars-license{
+            display: inline-block;
+            font-size: 18px;
+        }
+        .cars-energy{
+            margin-top: 10px;
+            li{
+                display: inline-block;
+                width: 7px;
+                height: 24px;
+                border-radius: 100px;
+                background-color: #e1e1e1;
+                ~li{
+                    margin-left: 3px;
+                };
+            }
+            @for $i from 1 through 10 {
+                &.active-li-#{$i}{
+                    li:nth-child(-n+#{$i}){
+                        @include webkit_a(background,linear-gradient(to bottom,#17a8fa,#108dd9));
+                    }
+                }
+            }
+        }
+        .cars-energy{
+            display: none;
+        }
+        .cars-energy-box{
+            display: block;
+            margin-top: 17px;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 100px;
+            background-color: #fff;
+            @include webkit(box-shadow,0 0 10px 0 rgba(0,0,0,.1));
+            .e-bg{
+            display: block;
+            height: 8px;
+            background-color: #e1e1e1;
+            border-radius: 100px;
+            }
+            .e-high{
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                background-color: $color_blue;
+                border-radius: 100px;
+            }
+        }
+        .cars-distance{
+            float: right;
+            display: inline;
+            margin-right: 0;
+            margin-top: 5px;
+            strong{
+                margin:0 5px;
+                font-size: 22px;
+            }
+            sub{
+                position: relative;
+                top: -2px;
+            }
+        } 
+    }
+
+    footer{
+        order: -1;
+        .park-link{
+            border-top: none;
+            border-bottom: 1px solid #e1e1e1;
+            &:after{
+                display: none;
+            }
+        }
+    }
+
+    .cars-rent-type{
+      display: block;
+        li{
+          display: flex;
+          padding: 0 17px 0 20px;
+          justify-content: space-between;
+          height: 43px;
+          background-color: #f3f3f3;
+          border: 2px solid #f3f3f3;
+          border-radius: 10px;
+          line-height: 43px;
+          font-size: 16px;
+          ~li{
+              margin-top: 15px;
+          }
+          &.current{
+              border-color: $color_blue;
+          }
+        }
+        // .cars-rent{
+  
+        // }
+        // .cars-price{
+  
+        // }
+    }
+    
+    .close{
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: 20px;
+        top:20px;
+        &::after{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 20px;
+            border-left:2px solid #999c9f ;
+            @include webkit(transform,translate(0,-50%) rotate(45deg));
+        }
+        &::before{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 20px;
+            border-left:2px solid #999c9f ;
+            @include webkit(transform,translate(0,-50%) rotate(-45deg));
+        }
+    }
+
+    .clause{
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        i{
+            width: 20px;
+            height: 20px;
+            border-radius: 100px;
+            background-color: #cccc;
+            &.current{
+                background-color: #000;
+            }
+            &::before{
+                content: "";
+                display: block;
+                width: 8;
+                height: 4px;
+                margin:6px 6px 0px 6px;
+                border-left: 2px solid #fff;
+                border-bottom: 2px solid #fff;
+                @include webkit(transform,rotate(-45deg));
+            }
+        }
+    }
+    
+    .cars-button {
+        position: absolute;
+        display: block;
+        width: 180px;
+        height: 66px;
+        border-radius: 100px;
+        line-height: 66px;
+        text-align: center;
+        color: #fff;
+        background-color: $color_main;
+        font-size: 26px;
+        font-weight: 240;
+        left: 50%;
+        @include webkit(transform,translate(-50%,0));
+        bottom: -60px;
+    }
+}
+
+.scroll{
+    overflow-y: scroll;
+    overflow-x:hidden ;
+    display: flex;
+    flex-direction: column;
+}
+ 

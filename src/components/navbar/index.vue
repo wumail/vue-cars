@@ -38,17 +38,5 @@ export default {
   }
 }
 
-.select-car-button {
-  display: block;
-  width: 180px;
-  height: 66px;
-  margin: 0 17px;
-  border-radius: 100px;
-  line-height: 66px;
-  text-align: center;
-  color: #fff;
-  background-color: $color_main;
-  font-size: 26px;
-  font-weight: 240;
-}
+
 </style>
