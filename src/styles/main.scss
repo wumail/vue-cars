@@ -1,7 +1,21 @@
 @import './sassConfig.scss';
 @import './normalize.scss';
 
+@mixin webkit($attr, $value) {
+    -webkit-#{$attr}: $value;
+    -moz-#{$attr}: $value;
+    -ms-#{$attr}: $value;
+    -o-#{$attr}: $value;
+    #{$attr}: $value;
+}
 
+@mixin webkit_a($name,$value){
+    #{$name}: -webkit-#{$value};
+    #{$name}: -moz-#{$value};
+    #{$name}: -ms-#{$value};
+    #{$name}: -o-#{$value};
+    #{$name}: #{$value};
+}
 
 body{
     background-color:rgb(207, 222, 235);
@@ -9,12 +23,15 @@ body{
 
 i[class^=icon]{
     display: inline-block;
-    width: 44px;
-    height: 44px;
     border-radius: 50%;
     background-color: $color_main;
     background-repeat: no-repeat;
+    @include webkit(box-shadow, 0 0 18px 0 rgba(0,0,0,.5));
+}
 
+.icon-w-44{
+    width: 44px;
+    height: 44px;
 }
 
 .icon-help{
@@ -33,20 +50,24 @@ i[class^=icon]{
     background-image: url($icon_user);
 }
 
-@mixin webkit($attr, $value) {
-    -webkit-#{$attr}: $value;
-    -moz-#{$attr}: $value;
-    -ms-#{$attr}: $value;
-    -o-#{$attr}: $value;
-    #{$attr}: $value;
+.icno-router-link-001{
+    background-image: url($icon_router_link_001);
 }
 
-@mixin webkit_a($name,$value){
-    #{$name}: -webkit-#{$value};
-    #{$name}: -moz-#{$value};
-    #{$name}: -ms-#{$value};
-    #{$name}: -o-#{$value};
-    #{$name}: #{$value};
+.icno-router-link-002{
+    background-image: url($icon_router_link_002);
+}
+
+.icno-router-link-003{
+    background-image: url($icon_router_link_003);
+}
+
+.icno-router-link-004{
+    background-image: url($icon_router_link_004);
+}
+
+.icno-router-link-005{
+    background-image: url($icon_router_link_005);
 }
 
 .p-r{ position: relative;}
@@ -64,4 +85,35 @@ i[class^=icon]{
     background-color: $color_main;
     font-size: 26px;
     font-weight: 240;
+    @include webkit(box-shadow, 0 0 18px 0 rgba(0,0,0,.5));
+}
+
+//user
+.user-container{
+    display: flex;
+    flex-direction: column;
+}
+
+//user-router-link
+.link-groups{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 20px;
+    a{
+        display: flex;
+        justify-items: center;
+        align-items: center;
+        height: 64px;
+        line-height: 64px;
+        color: rgba(255,255,255,.4);
+        border-bottom: 1px solid rgba(255,255,255,.03);
+        font-size: 15px;
+    }
+    .icon{
+        width: 30px;
+        height: 30px;
+        margin: 0 16px -10px 32px;
+        @include webkit(transform,translate(0,-20%));
+    }
 }

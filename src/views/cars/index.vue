@@ -35,19 +35,8 @@
         slot="button-next"
         @click="prev"
       ></div>
-      <!-- <div
-        class="swiper-button-prev"
-        slot="button-prev"
-        @click="prev"
-      ></div>
-      <div
-        class="swiper-button-next"
-        slot="button-next"
-        @click="next"
-      ></div> -->
     </div>
-
-    <span @click="user">
+    <span>
       汽车列表
     </span>
   </div>
@@ -86,12 +75,6 @@ export default {
       }
     },
     methods:{
-        user(){
-            this.$router.push({
-                name:'User'
-            })
-        },
-
         prev() {
           this.swiper.slidePrev();
         },

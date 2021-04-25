@@ -1,0 +1,45 @@
+.user-info{
+    display: flex;
+    padding: 72px 0 0 20px;
+    img{
+        width: 81px;
+        height: 80px;
+        border-radius: 100%;
+        border:6px solid #2f343a
+    }
+    .meta{
+        flex:1;
+        padding-left: 17px;
+        .name{
+            color: #909090;
+            line-height: 43px;
+        }
+        span{
+            display: inline-block;
+            height: 27px;
+            padding: 0 17px;
+            background-color: $color_blue;
+            border-radius: 100px;
+            line-height: 27px;
+            color: #fff;
+            font-size: 14px;
+            @include webkit(box-shadow, 0 0 18px 0 rgba(0,0,0,.5));
+        }
+    }
+}
+.user-logout{
+    justify-self: center;
+    align-self: center;
+    position: absolute;
+    bottom: 20px;
+    width: 165px;
+    height: 58px;
+    border-radius: 100px;
+    text-align: center;
+    line-height: 58px;
+    color: #fff;
+    background-color: #2d3339;
+    font-size: 18px;
+    border: none;
+    outline: none;
+}

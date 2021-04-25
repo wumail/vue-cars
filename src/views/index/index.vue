@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- dom-->
-    <Car />
+    <!-- <Car /> -->
     <!-- 地图-->
     <Map />
     <!-- 导航 -->
@@ -36,20 +36,33 @@ export default {
             return router.name === 'Index'?false:true;
         },
     },
+    mounted(){
+      document.addEventListener('mouseup',(e)=>{
+        const userCon = document.getElementById('children-view');
+        if(userCon){
+          if(!userCon.contains(e.target)){
+            this.$router.push({
+              name:'Index'
+            })
+          }
+        }
+      })
+    },
     watch:{
 
-    }
+    },
 }
 </script>
 <style lang="scss">
 #children-view {
+  @include webkit(box-shadow, -5px 0 38px 0 rgba(0, 0, 0, 0.4));
   @include webkit(transition, all 0.3s ease 0s);
   position: fixed;
-  width: 250px;
+  width: 300px;
   background-color: #34393f;
   top: 0;
   bottom: 0;
-  right: -250px;
+  right: -300px;
   z-index: 15;
   &.open {
     right: 0;
