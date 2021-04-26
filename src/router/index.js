@@ -24,13 +24,25 @@ const routes = [
     name: "Index",
     component: () =>
       import("../views/index/index.vue"),
-    children:[
+    children: [
       {
         path: "/user",
         name: "User",
         component: () =>
-        import("../views/user/index.vue"),
-        }
+          import("../views/user/index.vue"),
+      },
+      {
+        path: "/safe",
+        name: "Safe",
+        component: () =>
+          import("../views/safe/index.vue"),
+      },
+      {
+        path: "/password",
+        name: "Password",
+        component: () =>
+          import("../views/safe/password.vue"),
+      },
     ]
   },
 ];

@@ -1,0 +1,37 @@
+.cars-form-ui{
+    .el-input__inner{
+        background-color: #202429 !important;
+        border: 1px solid #202429 !important;
+        color: #fff;
+        &::-webkit-input-placeholder{color: rgba($color: #fff, $alpha: .3);}
+        &::-moz-placeholder{color: rgba($color: #fff, $alpha: .3);}
+        &:-ms-input-placeholder{color: rgba($color: #fff, $alpha: .3);}
+        &:-moz-placeholder{color: rgba($color: #fff, $alpha: .3);}
+    
+        .el-form-item{
+            margin-bottom: 15px !important;
+        }
+    }
+    .btn-vcode{
+        position: absolute;
+        z-index: 2;
+        top: 15%;
+        right: 4px;
+        width: 100px;
+        height: 70%;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 70%;
+        color: #fff;
+        border-radius: 5px;
+        font-size: 12px;
+        outline: none;
+        border: none;
+        background-color: #34393f;
+        cursor: pointer;
+    }
+}
+
+.btn-100{
+    width: 100%;
+}

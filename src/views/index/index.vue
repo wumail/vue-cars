@@ -27,7 +27,7 @@ export default {
     components:{ Map, Car, Navbar },
     data(){
         return {
-            // ifshow:false,
+            ifshow:false,
         }
     },
     computed:{
@@ -62,7 +62,9 @@ export default {
   background-color: #34393f;
   top: 0;
   bottom: 0;
-  right: -300px;
+  right: -330px;
+  padding-left: 15px;
+  padding-right: 15px;
   z-index: 15;
   &.open {
     right: 0;

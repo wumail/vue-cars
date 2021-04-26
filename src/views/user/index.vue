@@ -16,31 +16,51 @@
       </div>
     </div>
     <ul class="link-groups">
-      <router-link to='aa'>
+      <router-link
+        to='aa'
+        tag='a'
+        class='arrow'
+      >
         <i class="icon icno-router-link-001"></i>
         <span>
           我的账户
         </span>
       </router-link>
-      <router-link to='aa'>
+      <router-link
+        to='aa'
+        tag='a'
+        class='arrow'
+      >
         <i class="icon icno-router-link-002"></i>
         <span>
           租车订单
         </span>
       </router-link>
-      <router-link to='aa'>
+      <router-link
+        to='aa'
+        tag='a'
+        class='arrow'
+      >
         <i class="icon icno-router-link-003"></i>
         <span>
           实名认证
         </span>
       </router-link>
-      <router-link to='aa'>
+      <router-link
+        to='/safe'
+        tag='a'
+        class='arrow'
+      >
         <i class="icon icno-router-link-004"></i>
         <span>
           安全设置
         </span>
       </router-link>
-      <router-link to='aa'>
+      <router-link
+        to='aa'
+        tag='a'
+        class='arrow'
+      >
         <i class="icon icno-router-link-005"></i>
         <span>
           帮助中心
