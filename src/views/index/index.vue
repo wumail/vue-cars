@@ -4,6 +4,7 @@
     <!-- <Car /> -->
     <!-- 地图-->
     <Map />
+    <Login />
     <!-- 导航 -->
     <Navbar />
     <!-- 会员-->
@@ -20,11 +21,12 @@ import {AMapManager , lazyAMapApiLoaderInstance} from 'vue-amap'
 import Map from '../amap/index'
 import Car from '../cars/index'
 import Navbar from '@/components/navbar/index'
+import Login from '../login/index';
 
 // let amapManager = AMapManager;
 export default {
     name: 'Index',
-    components:{ Map, Car, Navbar },
+    components:{ Map, Car, Navbar, Login },
     data(){
         return {
             ifshow:false,
