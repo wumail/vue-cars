@@ -18,11 +18,32 @@
         :strokeWeight='item.strokeWeight'
         :key="item.id"
       ></el-amap-circle>
+
+      <el-amap-marker
+        v-for="(item,index) in parkings"
+        :key="item.key1"
+        :position='item.position'
+        :offset='item.offset'
+        :content='item.content'
+        :vid='index'
+      >
+      </el-amap-marker>
+      <el-amap-marker
+        v-for="(item,index) in parkings"
+        :key="item.key2"
+        :position='item.position'
+        :offset='item.offsetText'
+        :content='item.text'
+        :vid='index'
+      >
+      </el-amap-marker>
     </el-amap>
   </div>
 </template>
 <script>
 import {AMapManager , lazyAMapApiLoaderInstance} from 'vue-amap'
+import { selfLocation } from "./location";
+
 let amapManager = new AMapManager();
 export default {
     name: 'Map',
@@ -48,7 +69,13 @@ export default {
                     strokeOpacity:0.2,
                     strokeWeight:30,
                 }
-            ]
+            ],
+            parkings:[
+                {
+                    id:1,content:"<img src='"+ require('@/assets/images/parking_location_img.png') +"'>",
+                    position:[126.63558,45.70852],offset:[-35,-60]
+                },
+            ],
         }
     },
     methods:{
@@ -60,45 +87,29 @@ export default {
                 function:'loadMap',
             })
 
-             var geolocation = new AMap.Geolocation({
-                enableHighAccuracy: true,//是否使用高精度定位，默认:true
-                timeout: 10000,          //超过10秒后停止定位，默认：5s
-                buttonPosition:'RB',    //定位按钮的停靠位置
-                buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
-                zoomToAccuracy: true,   //定位成功后是否自动调整地图视野到定位点
-                markerOptions:{
-                    content:' '
-                }
-            });
-            this.map.addControl(geolocation);
-            geolocation.getCurrentPosition((status,result)=>{
-                if(status=='complete'){
-                    onComplete(result)
-                }else{
-                    onError(result)
-                }
-            });
-            function onComplete(data) {
-                var str = [];
-                str.push('定位结果：' + data.position);
-                str.push('定位类别：' + data.location_type);
-                if(data.accuracy){
-                    str.push('精度：' + data.accuracy + ' 米');
-                }//如为IP精确定位结果则没有精度信息
-                str.push('是否经过偏移：' + (data.isConverted ? '是' : '否'));
-                console.log(str);
-                _this.circle[0].center = [data.position.lng,data.position.lat]
-            }
-            //解析定位错误信息
-            function onError(data) {
-                console.log(data);
-            }
+            this.resetLocation()
+        },
+        resetLocation(){
+            selfLocation({
+                map:this.map,
+                complete:(val)=>this.complete(val)
+            })
+        },
+        complete(val){
+            this.circle[0].center = [val.position.lng, val.position.lat]
+        },
+        parkingData(data){
+            this.parkings = data
         }
-        
     },
     mounted(){
         
-    }
+    },
+    watch:{
+        "$store.state.location.selfLocation":function (){
+            this.resetLocation()
+        }
+    },
 }
 </script>
 <style lang="scss">

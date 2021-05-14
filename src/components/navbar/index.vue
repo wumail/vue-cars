@@ -7,7 +7,10 @@
           href="javascript:void(0)"
           class="select-car-button"
         >选择车辆</a></li>
-      <li><i class="icon icon-w-44 icon-location"></i></li>
+      <li><i
+          class="icon icon-w-44 icon-location"
+          @click="location"
+        ></i></li>
       <li><i
           class="icon icon-w-44 icon-user"
           @click="toUser"
@@ -20,10 +23,13 @@ export default {
     name:'Navbar',
     methods:{
       toUser(){
-            this.$router.push({
-                name:'User'
-            })
-        },
+          this.$router.push({
+              name:'User'
+          })
+      },
+      location(){
+        this.$store.commit("location/SELF_LOCATION")
+      }
     },
 }
 </script>
