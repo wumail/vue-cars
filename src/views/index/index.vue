@@ -3,8 +3,7 @@
     <!-- dom-->
     <!-- <Car /> -->
     <!-- 地图-->
-    <Map />
-    <Login />
+    <Map @mapCallback='mapCallback' />
     <!-- 导航 -->
     <Navbar />
     <!-- 会员-->
@@ -17,16 +16,17 @@
   </div>
 </template>
 <script>
-import {AMapManager , lazyAMapApiLoaderInstance} from 'vue-amap'
+// import {AMapManager , lazyAMapApiLoaderInstance} from 'vue-amap'
 import Map from '../amap/index'
 import Car from '../cars/index'
 import Navbar from '@/components/navbar/index'
-import Login from '../login/index';
+
+import { Parking } from "@/api/parking.js";
 
 // let amapManager = AMapManager;
 export default {
     name: 'Index',
-    components:{ Map, Car, Navbar, Login },
+    components:{ Map, Car, Navbar },
     data(){
         return {
             ifshow:false,
@@ -42,13 +42,28 @@ export default {
       document.addEventListener('mouseup',(e)=>{
         const userCon = document.getElementById('children-view');
         if(userCon){
-          if(!userCon.contains(e.target)){
+          if(!userCon.contains(e.target) && this.$route.name!=='Index'){
             this.$router.push({
               name:'Index'
             })
           }
         }
       })
+    },
+    methods:{
+      mapCallback(params){
+        params.function&&this[params.function](params.data);
+      },
+
+      loadMap(){
+        this.getParking()
+      },
+
+      getParking(){
+        Parking().then((response)=>{
+          const data =response.data;
+        })
+      }
     },
     watch:{
 
