@@ -3,7 +3,10 @@
     <!-- dom-->
     <!-- <Car /> -->
     <!-- 地图-->
-    <Map @mapCallback='mapCallback' />
+    <Map
+      ref="map"
+      @mapCallback='mapCallback'
+    />
     <!-- 导航 -->
     <Navbar />
     <!-- 会员-->
@@ -61,7 +64,17 @@ export default {
 
       getParking(){
         Parking().then((response)=>{
-          const data =response.data;
+          const data =response.data.data;
+          data.forEach(item => {
+            item.key1 = Date.now();
+            item.position=[+item.lnglat.split(',')[0],+item.lnglat.split(',')[1]];
+            item.content = "<img src='"+ require('@/assets/images/parking_location_img.png') +"'>";
+            item.offset = [-35,-60];
+            item.offsetText =[-35,-40];
+            item.text=`<div style='width:70px;font-size:20px;color:#fff;background-color:transparent;text-align:center;'>${item.carsNumber}</div>`;
+            item.key2 = Date.now()+3600;
+          });
+          this.$refs.map.parkingData(data)
         })
       }
     },
