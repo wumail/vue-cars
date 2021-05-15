@@ -6,7 +6,15 @@
         class="swiper"
         :options="swiperOption"
       >
-        <swiper-slide class="swiper-slice">
+        <swiper-slide
+          class="swiper-slice"
+          v-for="item in carsList"
+          :key='item.id'
+        >
+          <CarItem :data='item' />
+        </swiper-slide>
+
+        <!-- <swiper-slide class="swiper-slice">
           <CarItem
             :ifShowDetail="ifShowDetail"
             height='600px'
@@ -23,7 +31,7 @@
         </swiper-slide>
         <swiper-slide class="swiper-slice">
           <CarItem />
-        </swiper-slide>
+        </swiper-slide> -->
       </swiper>
       <div
         class="swiper-button-prev"
@@ -43,8 +51,11 @@
 </template>
 <script>
 import {Swiper,SwiperSlide} from 'vue-awesome-swiper'
-import CarItem from '@/components/carsList/index';
 import 'swiper/swiper-bundle.css'
+
+import CarItem from './carsList/index';
+import { CarsList } from "@/api/cars.js";
+
 export default {
     name: 'Cars',
     components: {
@@ -67,6 +78,7 @@ export default {
             freeModeSticky:true,
           },
           ifShowDetail:true,
+          carsList:[]
         }
     },
     computed:{
@@ -81,6 +93,14 @@ export default {
 
         next() {
           this.swiper.slideNext();
+        },
+
+        getCarsList(parkingId){
+           CarsList({parkingId}).then((response)=>{
+            const data = response.data.data;
+            console.log(data);
+            data && (this.carsList = data)
+          })
         }
     }
 }

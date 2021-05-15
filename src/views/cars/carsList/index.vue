@@ -8,10 +8,10 @@
         <header>
           <h4 class="cars-logo">
             <img
-              src="@/assets/images/cars-logo.png"
-              alt="Mustang 2019款"
+              :src="data.imgUrl"
+              :alt="data.carsMode"
             >
-            <span class="cars-name">Mustang 2019款</span>
+            <span class="cars-name">{{data.carsMode}}</span>
           </h4>
           <p class="cars-attr">
             新能源汽车 5座
@@ -20,8 +20,11 @@
         <div class="cars-content">
           <div class="cars-info">
             <div>
-              <h4 class="cars-license">川B LV624</h4>
-              <ul class="cars-energy active-li-6">
+              <h4 class="cars-license">{{data.carsNumber}}</h4>
+              <ul
+                class="cars-energy"
+                :class="data.electric | electricNumber"
+              >
                 <li></li>
                 <li></li>
                 <li></li>
@@ -53,7 +56,7 @@
             </div>
           </div>
           <img
-            src="@/assets/images/pic001.jpg"
+            :src="data.carsImg"
             alt="what is the car look like"
           >
         </div>
@@ -61,7 +64,7 @@
           <a
             href="javascript:void(0)"
             class="park-link"
-          >某某某停车场</a>
+          >{{data.parkingName}}</a>
         </footer>
         <ul class="cars-rent-type">
           <li class="current">
@@ -100,11 +103,21 @@
 <script>
 export default {
     name:'CarsList',
+    filters:{
+      electricNumber(val){
+        const number = Math.round(val/10);
+        return `active-li-${number}`;
+      }
+    },
     props:{
       ifShowDetail:{
         type:Boolean,
         default:false,
       },
+      data:{
+        type:Object,
+        default:()=>{}
+      }
     }
 }
 </script>

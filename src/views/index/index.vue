@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- dom-->
-    <!-- <Car /> -->
+    <Car ref="car" />
     <!-- 地图-->
     <Map
       ref="map"
@@ -75,7 +75,10 @@ export default {
             item.flag = `${item.parkingName}_${item.position}`.replaceAll(/\.|\,/g,'')
             item.text = `<div class='parking-marker ${item.flag}'><span>${item.carsNumber}</span></div>`
             item.events={
-              click:(e)=> this.walking(e)
+              click:(e)=> {
+                this.walking(e)
+                this.getCarsList(e)
+              }
             };
             // item.content = "<img src='"+ require('@/assets/images/parking_location_img.png') +"'>";
             // item.offset = [-35,-60];
@@ -94,7 +97,12 @@ export default {
           flag:val.flag,
           end:val.position
         })
-      }
+      },
+      getCarsList(e){
+        const data  = e.target.getExtData()
+    console.log(data);
+        this.$refs.car && this.$refs.car.getCarsList(data.id);
+      },
     },
     watch:{
 
