@@ -12,7 +12,9 @@ VueAMap.initAMapApiLoader({
         'AMap.MapType',
         'AMap.PolyEditor',
         'AMap.CircleEditor',
-        'AMap.Geolocation',],
+        'AMap.Geolocation',
+        'AMap.Walking',
+    ],
     // 默认高德 sdk 版本为 1.4.4
     v: '1.4.4'
 });
